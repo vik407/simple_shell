@@ -7,8 +7,8 @@
 int main(int argc, char *argv[])
 {
 	int i = 0;
-
 	(void) argc;
+
 	while (*argv != NULL)
 	{
 		printf("argv[%d] = %s \n", i, *argv);
