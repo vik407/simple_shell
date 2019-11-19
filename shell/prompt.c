@@ -7,16 +7,19 @@
  */
 int main(void)
 {
-	size_t bufsize = 1024;
+	size_t bufsize = BUFFER_SIZE;
+	size_t i = 0;
 	/* Contar de mi buff la cantidad de separadores que tengo para hacer este dinámico */
 	char *buff = NULL;
-	int getline_status, i, k;
+	int getline_status, k, status = 1;
 	char *token;
 	/* Hacer el malloc luego del cuento de separadores */
-	char **tokens = (char**) malloc(bufsize * sizeof(char *));
+	char **tokens = malloc(bufsize * sizeof(char*));
 	const char s[2] = " ";
-	int status = 1;
-	i = 0;
+	if (!tokens) {
+		fprintf(stderr, "Error\n");
+		exit(EXIT_FAILURE);
+	}
 
 	while (status == 1)
 	{
@@ -30,14 +33,25 @@ int main(void)
 		token = strtok(buff, s);
 		if (getline_status > 1)
 		{
+			i = 0;
 			while (token != NULL)
 			{
 				tokens[i] = token;
-				printf( "Token: %s\n", token );
-				token = strtok(NULL, s);
 				i++;
+				/* If the number of tokens overpases the buffer realloc */
+				if (i >= bufsize)
+				{
+					bufsize += BUFFER_SIZE;
+					tokens = realloc(tokens, bufsize * sizeof(char *));
+					if (!tokens) {
+						fprintf(stderr, "Error\n");
+						exit(EXIT_FAILURE);
+					}
+				}
+				printf( "Token: %s\n", token);
+				token = strtok(NULL, s);
 			}
-			for (k = 0; tokens != NULL; k++)
+			for (k = 0; tokens[k] != NULL; k++)
 			{
 				printf( "Tokens[%d]: %s\n", k, tokens[k]);
 			}
@@ -54,5 +68,7 @@ int main(void)
 		}
 	}
 	free(buff);
+	free(token);
+	free(tokens);
 	return (0);
 }

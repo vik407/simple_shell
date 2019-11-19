@@ -12,5 +12,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+/* Shell */
+#define BUFFER_SIZE 64
 
 #endif

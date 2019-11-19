@@ -2,6 +2,13 @@
 
 int main(int ac, char **av)
 {
-	/* Get the user input */
+	int status = 1;
+
+	/* Create the loop */
+	do
+	{
+		printf("$ ");
+		
+	} while (status);
 	
 }
