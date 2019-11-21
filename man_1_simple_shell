@@ -1,4 +1,4 @@
-.TH man 1 "20 dic 2019" "1.0" "simple shell man page"
+.TH man 5 "20 dic 2019" "1.0" "simple shell man page"
 .SH NAME
 .B simple shell
 - Simple UNIX command interpreter.
@@ -8,6 +8,13 @@
 .SS DESCRIPTION
 .Pp 
 by means of a command line interface, it uses a command language interpreter compatible with sh that executes commands read from the standard input or from a file, executes those commands, which allows to give instruction to a program by means of a line of simple text, then simple_shell searches the PATH directories for the script.
+.SH OPTiONS
+.I \fB-ctrl + d. \fp
+Pressing these keys at the same time exits the simple shell mode
+.SH FILES
+/etc/shell
+/bin/sh
+
 .Pp
 .SH BUGS
 No known bugs.
