@@ -23,7 +23,7 @@ Use system calls only when you need to
 
 ### Authorized functions and macros
 
-```
+	```
  	access (man 2 access)
 	chdir (man 2 chdir)
 	close (man 2 close)
@@ -69,5 +69,5 @@ Use system calls only when you need to
 
 ## Authors
 
-	* **Victor Hernandez**
-	* **Juan David Davalos** 
+	***Victor Hernandez**
+	***Juan David Davalos** 
