@@ -9,6 +9,7 @@
 int main(void)
 {
 	char *argv[] = {"/bin/ls", "-la", "/usr/", NULL};
+
 	printf("Before execute\n");
 	if (execve(argv[0], argv, NULL) == -1)
 	{
@@ -17,6 +18,5 @@ int main(void)
 	{
 		printf("After execute\n");
 	}
-	
 	return (0);
 }

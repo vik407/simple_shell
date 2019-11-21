@@ -1,7 +1,8 @@
 #include "../holberton.h"
 /**
  * main - Prints all the arguments without strok
- *
+ * @argc: take an argument.
+ * @argv: take an argument.
  * Return: 0 on success
  */
 int main(int argc, char *argv[])

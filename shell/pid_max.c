@@ -1,6 +1,6 @@
 #include "../holberton.h"
 
-/*
+/**
  * main - Get the max pid
  * Return: 0 on success
  */
