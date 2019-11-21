@@ -19,5 +19,7 @@
 /* Shell prototypes */
 char *read_line(void);
 char **tokenizer(char *read_line);
+int run_execve(char **tokens, char **env);
+char *run_flag(char *app);
 
 #endif
