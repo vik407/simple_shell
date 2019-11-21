@@ -1,89 +1,72 @@
-# HOLBERTON SCHOOL - 0x16. C - Simple Shell
+# Simple Shell
 
-A simple UNIX command interpreter.
-
-![alt text](https://s3.amazonaws.com/intranet-projects-files/holbertonschool-low_level_programming/235/shell.jpeg "0x16. C - Simple Shell")
+Simple UNIX command interpreter..
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Requirements
 
-What things you need to install the software and how to install them
+General
 
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+```llowed editors: vi, vim, emacs
+All your files will be compiled on Ubuntu 14.04 LTS
+Your C programs and functions will be compiled with gcc 4.8.4 using the flags -Wall -Werror -Wextra and -pedantic
+All your files should end with a new line
+A README.md file, at the root of the folder of the project is mandatory
+Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
+No more than 5 functions per file
+All your header files should be include guarded
+Use system calls only when you need to 
 ```
 
-And repeat
+### Authorized functions and macros
 
 ```
-until finished
-```
+ 	access (man 2 access)
+	chdir (man 2 chdir)
+	close (man 2 close)
+	closedir (man 3 closedir)
+	execve (man 2 execve)
+	exit (man 3 exit)
+	_exit (man 2 _exit)
+	fflush (man 3 fflush)
+	fork (man 2 fork)
+	free (man 3 free)
+	getcwd (man 3 getcwd)
+	getline (man 3 getline)
+	isatty (man 3 isatty)
+	kill (man 2 kill)
+	malloc (man 3 malloc)
+	open (man 2 open)
+	opendir (man 3 opendir)
+	perror (man 3 perror)
+	read (man 2 read)
+	readdir (man 3 readdir)
+	signal (man 2 signal)
+	stat (__xstat) (man 2 stat)
+	lstat (__lxstat) (man 2 lstat)
+	fstat (__fxstat) (man 2 fstat)
+	strtok (man 3 strtok)
+	wait (man 2 wait)
+	waitpid (man 2 waitpid)
+	wait3 (man 2 wait3)
+	wait4 (man 2 wait4)
+	write (man 2 write)
+	```
 
-End with an example of getting some data out of the system or using it for a little demo
+## Compilation
 
-## Running the tests
+	gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 
-Explain how to run the automated tests for this system
+## Files
 
-### Break down into end to end tests
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+	```
+	```
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+	* **Victor Hernandez**
+	* **Juan David Davalos** 
