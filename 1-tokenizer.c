@@ -1,6 +1,7 @@
 #include "holberton.h"
-/*
- * read_line - function that get the user input
+/**
+ * tokenizer - idk
+ * @read_line: function that get the user input
  * void: n/a
  * Return: The user command
  */
@@ -11,7 +12,7 @@ char **tokenizer(char *read_line)
 	int i = 0;
 	/*TODO strcount cantidad de palabras de readline y reemplazar BUFFER_SIZE*/
 
-	tokens =  malloc(BUFFER_SIZE * sizeof(char*));
+	tokens =  malloc(BUFFER_SIZE * sizeof(char *));
 	if (tokens == NULL)
 		return (NULL);
 
@@ -25,5 +26,5 @@ char **tokenizer(char *read_line)
 		}
 	}
 	tokens[i] = NULL;
-	return tokens;
+	return (tokens);
 }

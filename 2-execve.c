@@ -1,5 +1,5 @@
 #include "holberton.h"
-/*
+/**
  * run_execve - function that execute an app from the user input
  * @tokens: Array of commands that the user send
  * @env: the ENV variables
@@ -10,6 +10,7 @@ int run_execve(char **tokens, char **env)
 {
 	int res, child, child_status;
 	char *app, *app_exists;
+
 	env = NULL;
 	app_exists = NULL;
 	res = 0;
@@ -43,7 +44,7 @@ int run_execve(char **tokens, char **env)
 	}
 	return (res);
 }
-/*
+/**
  * run_flag - function that search if application exists in the PATH
  * @app: The token value with the app to search
  * Return: if app exists return 1 either NULL
@@ -57,18 +58,14 @@ char *run_flag(char *app)
 	{
 		res = "/bin/ls";
 	}
-	/* tomar el token[0] y buscarlo en en array del path */
-	
-	/* Leer el path 
-	la variable de entorno envp[] 3ra opcion
-	*/
-
-	/* tokenizar el path */
-
-	/* Por cada unode los del path (tokens)  hacer stat si encuentra el archivo */
-
-	/* Si encuentra el ejecutable retornar -> path completo */
-
-	/* Free the variable that return the path */
-	return res;
+	/**
+	 * tomar el token[0] y buscarlo en en array del path
+	 * Leer el path
+	 * la variable de entorno envp[] 3ra opcion
+	 * tokenizar el pat
+	 * Por cada unode los del path (tokens)  hacer stat si encuentra el archivo
+	 * Si encuentra el ejecutable retornar -> path completo
+	 * Free the variable that return the path
+	 */
+	return (res);
 }

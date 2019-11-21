@@ -1,5 +1,5 @@
 #include "holberton.h"
-/*
+/**
  * read_line - function that get the user input
  * void: n/a
  * Return: The user command
@@ -14,7 +14,7 @@ char *read_line(void)
 	buff[readline_status - 1] = '\0';
 	if (readline_status > 1)
 	{
-		return buff;
+		return (buff);
 	} else if (readline_status == -1)
 	{
 		printf("\n");
