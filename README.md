@@ -64,10 +64,10 @@ Use system calls only when you need to
 
 
 	```
-	dfssf
+	
 	```
 
 ## Authors
 
-	***Victor Hernandez**
-	***Juan David Davalos** 
+	* **Victor Hernandez**
+	* **Juan David Davalos** 
