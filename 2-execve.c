@@ -26,10 +26,12 @@ int run_execve(char **tokens)
 			run = execve(app_exists, tokens, NULL);
 			if (run == -1)
 				printf("%s: %s", app_exists, "No such file or directory \n");
+				/* Manejo de errores */
 			free(app);
 		} else
 		{
 			wait(&child_status);
+			/* analizar child_status retornar estaddo */
 		}
 	} else
 	{

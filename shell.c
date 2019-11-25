@@ -1,12 +1,15 @@
 #include "holberton.h"
+/**
+ * Simple Shell - Write a simple UNIX command interpreter.
+ * 
+ * */
 
 int main(int argc, char **argv, char **envp)
 {
 	int status = 1, k;
 	char *readline = NULL, **tokens, *dup_readline = NULL;
 
-	do
-	{
+	do {
 		printf("$ ");
 		readline = read_line();
 		if (readline != NULL)
@@ -21,7 +24,6 @@ int main(int argc, char **argv, char **envp)
 		{
 			free(readline);
 		}
-		
 	} while (status);
 	(void) argc;
 	(void) argv;
