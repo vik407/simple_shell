@@ -73,10 +73,12 @@ char *run_flag(char *app)
 			{
 				/*printf( "Found at [%d]: %s\n", i, __str);*/
 				res = strdup(__str);
-			} 
+				free(res);
+			}
 		}
-		free(_path[i]);
 		free(_path);
+		free(__str);
+		free(_str);
 	}
 	return (res);
 }

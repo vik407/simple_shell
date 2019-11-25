@@ -18,7 +18,6 @@ char *read_line(void)
 	} else if (readline_status == -1 || buff[0] == 0)
 	{
 		printf("\n");
-		free(buff);
 		exit(0);
 	}
 	free(buff);

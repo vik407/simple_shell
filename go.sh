@@ -2,7 +2,7 @@
 
 for i in shell.c
 do
-	echo "gcc -Wall -Werror -Wextra -pedantic *.c -o hsh"
-	#gcc -Wall -Werror -Wextra -pedantic *.c -o hsh && valgrind -v ./hsh
-	gcc -Wall -Werror -Wextra -pedantic *.c -o hsh && ./hsh
+	echo "Que Dios nos coja confesados!"
+	gcc -Wall -Werror -Wextra -pedantic *.c -o hsh && valgrind --leak-check=full --show-leak-kinds=all ./hsh
+	#gcc -Wall -Werror -Wextra -pedantic *.c -o hsh && ./hsh
 done
