@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <errno.h>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -15,11 +16,14 @@
 
 /* Shell */
 #define BUFFER_SIZE 64
+char *_PATH(char **envp);
 
 /* Shell prototypes */
 char *read_line(void);
 char **tokenizer(char *read_line);
-int run_execve(char **tokens, char **env);
+int run_execve(char **tokens);
 char *run_flag(char *app);
+
+
 
 #endif

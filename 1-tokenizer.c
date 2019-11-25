@@ -1,29 +1,34 @@
 #include "holberton.h"
 /**
  * tokenizer - idk
- * @read_line: function that get the user input
+ * @read_line: The user input to convert
  * void: n/a
  * Return: The user command
  */
 char **tokenizer(char *read_line)
 {
 	char **tokens = NULL;
-	char *token;
-	int i = 0;
-	/*TODO strcount cantidad de palabras de readline y reemplazar BUFFER_SIZE*/
-
-	tokens =  malloc(BUFFER_SIZE * sizeof(char *));
-	if (tokens == NULL)
-		return (NULL);
+	char *token, *_token, *_str = NULL;
+	int i = 0, j;
 
 	if (read_line != NULL)
 	{
-		token = strtok(read_line, " ");
+		_str = strdup(read_line);
+		_token = strtok(_str, " :");
+		for (j = 0; _token != NULL; j++)
+			_token = strtok(NULL, " :");
+		/* Create the malloc */
+		tokens =  malloc((j + 1) * sizeof(char *));
+		if (tokens == NULL)
+			return (NULL);
+		token = strtok(read_line, " :");
+		/* The array of tokens */
 		for (i = 0; token != NULL; i++)
 		{
 			tokens[i] = token;
-			token = strtok(NULL, " ");
+			token = strtok(NULL, " :");
 		}
+		free(_str);
 	}
 	tokens[i] = NULL;
 	return (tokens);

@@ -6,14 +6,13 @@
  * Return: The user command
  */
 
-int run_execve(char **tokens, char **env)
+int run_execve(char **tokens)
 {
-	int res, child, child_status;
+	int run, child, child_status;
 	char *app, *app_exists;
 
-	env = NULL;
 	app_exists = NULL;
-	res = 0;
+	run = 0;
 
 	/* Tomar el token[0] y validar si lo encuentra en el Path */
 	app = tokens[0];
@@ -24,9 +23,10 @@ int run_execve(char **tokens, char **env)
 		child = fork();
 		if (child == 0)
 		{
-			res = execve(app_exists, tokens, env);
-			if (res == -1)
-				exit(EXIT_FAILURE);
+			run = execve(app_exists, tokens, NULL);
+			if (run == -1)
+				printf("%s: %s", app_exists, "No such file or directory \n");
+			free(app);
 		} else
 		{
 			wait(&child_status);
@@ -36,13 +36,14 @@ int run_execve(char **tokens, char **env)
 		/* Implementar Built ins */
 		if (strncmp("env", app, 3) == 0)
 		{
-			/* Return the env */
+			printf("%s", "env here! \n");
 		} else
 		{
 			/* it's an error not found <hshshs>: command not found */
+			printf("%s", "No such file or directory \n");
 		}
 	}
-	return (res);
+	return (run);
 }
 /**
  * run_flag - function that search if application exists in the PATH
@@ -51,21 +52,31 @@ int run_execve(char **tokens, char **env)
  */
 char *run_flag(char *app)
 {
-	char *res;
+	int i, _access = 0;
+	char *res = NULL, *str, *_str, *__str, **_path;
 
-	res = NULL;
-	if (app != NULL)
+	str = getenv("PATH");
+	if (app)
 	{
-		res = "/bin/ls";
+		_str = strdup(str);
+		__str = malloc(sizeof(char) * 200);
+		_path = tokenizer(_str);
+		/* The token[0] command */
+		res = app;
+		for (i = 0; _path[i] != NULL; i++)
+		{
+			strcpy(__str, _path[i]);
+			strcat(__str, "/");
+			strcat(__str, app);
+			_access = access(__str, F_OK | R_OK | X_OK);
+			if (_access == 0)
+			{
+				/*printf( "Found at [%d]: %s\n", i, __str);*/
+				res = strdup(__str);
+			} 
+		}
+		free(_path[i]);
+		free(_path);
 	}
-	/**
-	 * tomar el token[0] y buscarlo en en array del path
-	 * Leer el path
-	 * la variable de entorno envp[] 3ra opcion
-	 * tokenizar el pat
-	 * Por cada unode los del path (tokens)  hacer stat si encuentra el archivo
-	 * Si encuentra el ejecutable retornar -> path completo
-	 * Free the variable that return the path
-	 */
 	return (res);
 }
