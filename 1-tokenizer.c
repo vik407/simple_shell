@@ -13,21 +13,24 @@ char **tokenizer(char *read_line)
 
 	if (read_line != NULL)
 	{
-		_str = strdup(read_line);
+		_str = _strdup(read_line);
 		_token = strtok(_str, " :");
 		for (j = 0; _token != NULL; j++)
 			_token = strtok(NULL, " :");
 		/* Create the malloc */
 		tokens =  malloc((j + 1) * sizeof(char *));
+
 		if (tokens == NULL)
 			return (NULL);
+
 		token = strtok(read_line, " :");
-		/* The array of tokens */
+
 		for (i = 0; token != NULL; i++)
 		{
 			tokens[i] = token;
 			token = strtok(NULL, " :");
 		}
+
 		free(_str);
 	}
 	tokens[i] = NULL;

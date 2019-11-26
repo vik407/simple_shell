@@ -24,10 +24,7 @@ int run_execve(char **tokens)
 		if (child == 0)
 		{
 			run = execve(app_exists, tokens, NULL);
-			if (run == -1)
-				printf("%s: %s", app_exists, "No such file or directory \n");
 				/* Manejo de errores */
-			free(app);
 		} else
 		{
 			wait(&child_status);
@@ -36,7 +33,7 @@ int run_execve(char **tokens)
 	} else
 	{
 		/* Implementar Built ins */
-		if (strncmp("env", app, 3) == 0)
+		if (strncmp("exit", app, 3) == 0)
 		{
 			printf("%s", "env here! \n");
 		} else
@@ -45,6 +42,7 @@ int run_execve(char **tokens)
 			printf("%s", "No such file or directory \n");
 		}
 	}
+	free(app_exists);
 	return (run);
 }
 /**
@@ -55,15 +53,14 @@ int run_execve(char **tokens)
 char *run_flag(char *app)
 {
 	int i, _access = 0;
-	char *res = NULL, *str, *_str, *__str, **_path;
+	char *res = NULL, *str, *_str = NULL, *__str = NULL, **_path;
 
 	str = getenv("PATH");
 	if (app)
 	{
-		_str = strdup(str);
+		_str = _strdup(str);
 		__str = malloc(sizeof(char) * 200);
 		_path = tokenizer(_str);
-		/* The token[0] command */
 		res = app;
 		for (i = 0; _path[i] != NULL; i++)
 		{
@@ -74,13 +71,27 @@ char *run_flag(char *app)
 			if (_access == 0)
 			{
 				/*printf( "Found at [%d]: %s\n", i, __str);*/
-				res = strdup(__str);
-				free(res);
+				res = _strdup(__str);
 			}
 		}
 		free(_path);
 		free(__str);
 		free(_str);
+	}
+	return (res);
+}
+/**
+ * _getenv - function that return a desired env info
+ * @var: The enviroment variable to get
+ * Return: The string with the content of the variable
+ */
+char *_getenv(char *var)
+{
+	char *res = NULL;
+
+	if (var != NULL)
+	{
+
 	}
 	return (res);
 }

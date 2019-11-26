@@ -16,9 +16,13 @@
 
 /* Shell */
 #define BUFFER_SIZE 64
+char *_strdup(char *str);
 char *_PATH(char **envp);
+char *_getenv(char *var);
 
 /* Shell prototypes */
+void hi();
+void prompt();
 char *read_line(void);
 char **tokenizer(char *read_line);
 int run_execve(char **tokens);

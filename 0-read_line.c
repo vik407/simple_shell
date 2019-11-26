@@ -17,10 +17,8 @@ char *read_line(void)
 		return (buff);
 	} else if (readline_status == -1 || buff[0] == 0)
 	{
-		printf("\n");
 		exit(0);
 	}
 	free(buff);
 	return (0);
 }
-
