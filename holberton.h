@@ -24,8 +24,8 @@ char *_PATH(char **envp);
 char *_getenv(char *var, char **envp);
 
 /* Shell prototypes */
-void hi();
-void prompt();
+void hi(void);
+void prompt(void);
 char *read_line(void);
 char **tokenizer(char *read_line);
 int run_execve(char **tokens, char **envp);

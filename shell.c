@@ -4,7 +4,8 @@
  * @argc: Number of Arguments
  * @argv: Arguments
  * @envp: Enviroment parameters
- * */
+ * Return: A prompt to execute commands
+ */
 int main(int argc, char **argv, char **envp)
 {
 	int status = 1, is_interactive;
@@ -26,13 +27,13 @@ int main(int argc, char **argv, char **envp)
 
 	(void) argc;
 	(void) argv;
-	return EXIT_SUCCESS;
+	return (EXIT_SUCCESS);
 }
 /**
  * hi - A message to welcome user in interactive mode
  * Return: welcome screen
  */
-void hi()
+void hi(void)
 {
 	_puts("\033[1;33m", 0);
 	_puts("============================================", 1);
@@ -44,10 +45,11 @@ void hi()
  * prompt - The shell prompt used and showed to the user
  * Return: text
  */
-void prompt()
+void prompt(void)
 {
 	char *_usrpath = getcwd(NULL, 1024);
 	char hostname[] = "Holberton@simple_shell:";
+
 	_puts("\033[1;31m", 0);
 	_puts(hostname, 0);
 	_puts("\033[0m", 0);

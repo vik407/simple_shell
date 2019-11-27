@@ -2,10 +2,9 @@
 /**
  * run_execve - function that execute an app from the user input
  * @tokens: Array of commands that the user send
- * @env: the ENV variables
+ * @envp: The enviroment variables array
  * Return: The user command
  */
-
 int run_execve(char **tokens, char **envp)
 {
 	int run, child, child_status;
@@ -33,7 +32,7 @@ int run_execve(char **tokens, char **envp)
 		/* Built ins */
 		if (_strncmp("exit", tokens[0], 5) == 0 && app != '\0')
 		{
-			exit(0);
+			exit(EXIT_SUCCESS);
 		}
 		else if (_strncmp("env", tokens[0], 4) == 0)
 		{
@@ -51,6 +50,7 @@ int run_execve(char **tokens, char **envp)
 /**
  * run_flag - function that search if application exists in the PATH
  * @app: The token value with the app to search
+ * @envp: The enviroment variables array
  * Return: if app exists return 1 either NULL
  */
 char *run_flag(char *app, char **envp)
@@ -87,8 +87,8 @@ char *run_flag(char *app, char **envp)
 /**
  * _getenv - function that return a desired env info
  * @var: The enviroment variable to get
+ * @envp: The envirment parameters array
  * Return: The string with the content of the variable
- * 
  */
 char *_getenv(char *var, char **envp)
 {
