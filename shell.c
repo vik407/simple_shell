@@ -12,13 +12,12 @@ int main(int argc, char **argv, char **envp)
 	is_interactive = isatty(STDIN_FILENO);
 	if (is_interactive)
 		hi();
-
 	do {
 		prompt();
 		readline = read_line();
 		_readline = _strdup(readline);
 		tokens = (_readline != NULL) ? tokenizer(_readline) : NULL;
-		run_execve(tokens);
+		run_execve(tokens, envp);
 		free(tokens);
 		free(readline);
 		free(_readline);

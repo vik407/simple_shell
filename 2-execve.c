@@ -6,7 +6,7 @@
  * Return: The user command
  */
 
-int run_execve(char **tokens)
+int run_execve(char **tokens, char **envp)
 {
 	int run, child, child_status;
 	char *app, *app_exists;
@@ -14,17 +14,16 @@ int run_execve(char **tokens)
 	app_exists = NULL;
 	run = 0;
 
-	/* Tomar el token[0] y validar si lo encuentra en el Path */
+	/* Get the app name to search */
 	app = tokens[0];
-	app_exists = run_flag(app);
-
-	if (app_exists)
+	app_exists = run_flag(app, envp);
+	if (app_exists != NULL)
 	{
 		child = fork();
 		if (child == 0)
 		{
 			run = execve(app_exists, tokens, NULL);
-				/* Manejo de errores */
+			/* Error Handling */
 		} else
 		{
 			wait(&child_status);
@@ -32,14 +31,18 @@ int run_execve(char **tokens)
 		}
 	} else
 	{
-		/* Implementar Built ins */
-		if (strncmp("exit", app, 3) == 0)
+		/* Built ins */
+		if (_strncmp("exit", tokens[0], 5) == 0 && app != '\0')
 		{
-			printf("%s", "env here! \n");
+			exit(0);
+		}
+		else if (_strncmp("env", tokens[0], 4) == 0)
+		{
+			_getenv("ALL", envp);
 		} else
 		{
-			/* it's an error not found <hshshs>: command not found */
-			printf("%s", "No such file or directory \n");
+			/* If no exist in built ins */
+			printf( "%s: not found\n", app);
 		}
 	}
 	free(app_exists);
@@ -50,18 +53,18 @@ int run_execve(char **tokens)
  * @app: The token value with the app to search
  * Return: if app exists return 1 either NULL
  */
-char *run_flag(char *app)
+char *run_flag(char *app, char **envp)
 {
 	int i, _access = 0;
 	char *res = NULL, *str, *_str = NULL, *__str = NULL, **_path;
 
 	str = getenv("PATH");
-	if (app)
+	/*str = _getenv("PATH", envp);*/
+	if (app && _strncmp("env", app, 4) != 0)
 	{
 		_str = _strdup(str);
 		__str = malloc(sizeof(char) * 200);
 		_path = tokenizer(_str);
-		res = app;
 		for (i = 0; _path[i] != NULL; i++)
 		{
 			strcpy(__str, _path[i]);
@@ -70,28 +73,37 @@ char *run_flag(char *app)
 			_access = access(__str, F_OK | R_OK | X_OK);
 			if (_access == 0)
 			{
-				/*printf( "Found at [%d]: %s\n", i, __str);*/
 				res = _strdup(__str);
+				break;
 			}
 		}
 		free(_path);
 		free(__str);
 		free(_str);
 	}
+	(void) envp;
 	return (res);
 }
 /**
  * _getenv - function that return a desired env info
  * @var: The enviroment variable to get
  * Return: The string with the content of the variable
+ * 
  */
-char *_getenv(char *var)
+char *_getenv(char *var, char **envp)
 {
 	char *res = NULL;
+	int i;
 
-	if (var != NULL)
+	for (i = 0; envp[i] != '\0'; i++)
 	{
-
+		if (strcmp(var, "ALL") == 0)
+			printf("%s\n", envp[i]);
+		else
+		{
+			if (envp[i] == var && var != NULL)
+				res = envp[i];
+		}
 	}
 	return (res);
 }

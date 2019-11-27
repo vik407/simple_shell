@@ -17,6 +17,7 @@ char *read_line(void)
 		return (buff);
 	} else if (readline_status == -1 || buff[0] == 0)
 	{
+		_putchar('\n');
 		exit(0);
 	}
 	free(buff);
