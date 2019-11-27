@@ -61,6 +61,35 @@ Use system calls only when you need to
 
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 
+### Testing
+
+Your shell should work like this in interactive mode:
+
+```sh
+$ ./hsh
+($) /bin/ls
+hsh main.c shell.c
+($)
+($) exit
+$
+```
+
+But also in non-interactive mode:
+
+```sh
+$ echo "/bin/ls" | ./hsh
+hsh main.c shell.c test_ls_2
+$
+$ cat test_ls_2
+/bin/ls
+/bin/ls
+$
+$ cat test_ls_2 | ./hsh
+hsh main.c shell.c test_ls_2
+hsh main.c shell.c test_ls_2
+$
+```
+
 ## Files
 
 
@@ -68,7 +97,7 @@ gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 
 ```
 
-## Authors
+# Authors
 
 * **Victor Hernandez**
 * **Juan David Davalos** 
