@@ -61,13 +61,13 @@ int _strncmp(char *s1, char *s2, int n)
 	return (0);
 }
 /**
- * _puts - prints a string, followed by a new line, to stdout
+ * _puts - prints a string, optional followed by a new line, to stdout
  *
  * @str: The String
+ * @n: 1 to end with new line or not
  * Return: string
  */
-
-void _puts(char *str)
+void _puts(char *str, int n)
 {
 	int length = 0;
 
@@ -76,5 +76,6 @@ void _puts(char *str)
 		_putchar(*(str + length));
 		length++;
 	}
-	_putchar('\n');
+	if (n == 1)
+		_putchar('\n');
 }

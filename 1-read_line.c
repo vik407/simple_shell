@@ -14,12 +14,16 @@ char *read_line(void)
 	buff[readline_status - 1] = '\0';
 	if (readline_status > 1)
 	{
-		return (buff);
-	} else if (readline_status == -1 || buff[0] == 0)
+		if (buff[0] != 0)
+		{
+			return (buff);
+			free(buff);
+		}
+	} else if (readline_status == -1)
 	{
 		_putchar('\n');
+		free(buff);
 		exit(0);
 	}
-	free(buff);
 	return (0);
 }

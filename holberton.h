@@ -18,7 +18,7 @@
 #define BUFFER_SIZE 64
 char *_strdup(char *str);
 int _putchar(char c);
-void _puts(char *str);
+void _puts(char *str, int n);
 int _strncmp(char *s1, char *s2, int n);
 char *_PATH(char **envp);
 char *_getenv(char *var, char **envp);

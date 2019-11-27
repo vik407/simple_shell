@@ -13,7 +13,6 @@ int run_execve(char **tokens, char **envp)
 
 	app_exists = NULL;
 	run = 0;
-
 	/* Get the app name to search */
 	app = tokens[0];
 	app_exists = run_flag(app, envp);
@@ -42,7 +41,8 @@ int run_execve(char **tokens, char **envp)
 		} else
 		{
 			/* If no exist in built ins */
-			printf( "%s: not found\n", app);
+			_puts(app, 0);
+			_puts(": not found", 1);
 		}
 	}
 	free(app_exists);
@@ -97,12 +97,16 @@ char *_getenv(char *var, char **envp)
 
 	for (i = 0; envp[i] != '\0'; i++)
 	{
-		if (strcmp(var, "ALL") == 0)
-			printf("%s\n", envp[i]);
+		if (_strncmp(var, "ALL", 4) == 0)
+			_puts(envp[i], 1);
 		else
 		{
-			if (envp[i] == var && var != NULL)
+			if (_strncmp(var, "PATH", 5) == 0 &&
+				_strncmp(envp[i], "PATH", 5)  == 0)
+			{
 				res = envp[i];
+				break;
+			}
 		}
 	}
 	return (res);

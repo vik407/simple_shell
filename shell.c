@@ -1,9 +1,10 @@
 #include "holberton.h"
 /**
- * Simple Shell - Write a simple UNIX command interpreter.
- * 
+ * main - A simple UNIX command interpreter.
+ * @argc: Number of Arguments
+ * @argv: Arguments
+ * @envp: Enviroment parameters
  * */
-
 int main(int argc, char **argv, char **envp)
 {
 	int status = 1, is_interactive;
@@ -25,7 +26,6 @@ int main(int argc, char **argv, char **envp)
 
 	(void) argc;
 	(void) argv;
-	(void) envp;
 	return EXIT_SUCCESS;
 }
 /**
@@ -34,12 +34,11 @@ int main(int argc, char **argv, char **envp)
  */
 void hi()
 {
-	printf("\033[1;33m");
-	printf("============================================\n");
-	printf("========== INTERACTIVE MODE ================\n");
-	printf("============================================\n");
-	printf("\n");
-	printf("\033[0m");
+	_puts("\033[1;33m", 0);
+	_puts("============================================", 1);
+	_puts("========== INTERACTIVE MODE ================", 1);
+	_puts("============================================", 1);
+	_puts("\033[0m", 0);
 }
 /**
  * prompt - The shell prompt used and showed to the user
@@ -49,11 +48,11 @@ void prompt()
 {
 	char *_usrpath = getcwd(NULL, 1024);
 	char hostname[] = "Holberton@simple_shell:";
-	printf("\033[1;31m");
-	printf("%s", hostname);
-	printf("\033[0m");
-	printf("\033[0;32m");
-	printf("%s", _usrpath);
-	printf("\033[0m");
-	printf("$ ");
+	_puts("\033[1;31m", 0);
+	_puts(hostname, 0);
+	_puts("\033[0m", 0);
+	_puts("\033[0;32m", 0);
+	_puts(_usrpath, 0);
+	_puts("\033[0m", 0);
+	_puts("$ ", 0);
 }
