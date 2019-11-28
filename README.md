@@ -107,6 +107,13 @@ $
 | holberton.h | library | |
 | man_1_simple_shell | shell manual | |
 
+### Built-ins
+| Command | Description |
+| ------------- |:-------------:|
+| env | prints the environment |
+| exit | exits with status 0 |
+| ctrl-d | exits with status 0 |
+
 # Authors
 
 * **Victor Hernandez**
