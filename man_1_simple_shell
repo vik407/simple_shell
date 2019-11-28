@@ -1,4 +1,4 @@
-.TH man 5 "20 dic 2019" "1.0" "simple shell man page"
+.TH man 1 "20 dic 2019" "1.0" "simple shell man page"
 .SH NAME
 .B simple shell
 - Simple UNIX command interpreter.
