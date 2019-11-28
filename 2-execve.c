@@ -23,16 +23,13 @@ int run_execve(char **tokens, char **envp)
 		{
 			execve(app_exists, tokens, NULL);
 			/* Error Handling */
-			perror(app_exists);
-			exit(EXIT_FAILURE);
 		} else
 		{
 			wait(&child_status);
 			/* analizar child_status retornar estaddo */
 		}
-		return (0);
 	} else
-	{ 
+	{
 		/* Built ins */
 		if (_strncmp("exit", tokens[0], 5) == 0 && app != '\0')
 		{
@@ -43,11 +40,10 @@ int run_execve(char **tokens, char **envp)
 			_getenv("ALL", envp);
 		} else
 		{
-			/* If no exist in built ins */ 
+			/* If no exist in built ins */
 			_puts(app, 0);
-			_puts(": No such file or directory", 1);
+			_puts(": not found", 1);
 		}
-		return (0);
 	}
 	free(app_exists);
 	return (0);
@@ -72,9 +68,9 @@ char *run_flag(char *app, char **envp)
 		_path = tokenizer(_str);
 		for (i = 0; _path[i] != NULL; i++)
 		{
-			_strcpy(__str, _path[i]);
-			_strcat(__str, "/");
-			_strcat(__str, app);
+			strcpy(__str, _path[i]);
+			strcat(__str, "/");
+			strcat(__str, app);
 			_access = access(__str, F_OK | R_OK | X_OK);
 			if (_access == 0)
 			{
@@ -82,16 +78,12 @@ char *run_flag(char *app, char **envp)
 				break;
 			}
 		}
-		free(_str);
+		free(_path);
 		free(__str);
-		free_double(_path);
-		_path = NULL;
-		return (res);
-	} else
-	{
-		return (res);
+		free(_str);
 	}
 	(void) envp;
+	return (res);
 }
 /**
  * _getenv - function that return a desired env info

@@ -12,8 +12,7 @@ int main(int argc, char **argv, char **envp)
 	char *readline = NULL, **tokens, *_readline = NULL;
 
 	is_interactive = isatty(STDIN_FILENO);
-	if (is_interactive)
-		hi();
+	/*if (is_interactive) hi();*/
 	do {
 		prompt();
 		readline = read_line();
@@ -33,6 +32,7 @@ int main(int argc, char **argv, char **envp)
 
 	(void) argc;
 	(void) argv;
+	(void) is_interactive;
 	return (EXIT_SUCCESS);
 }
 /**
@@ -53,15 +53,5 @@ void hi(void)
  */
 void prompt(void)
 {
-	char *_usrpath = getcwd(NULL, 1024);
-	char hostname[] = "Holberton@simple_shell:";
-
-	_puts("\033[1;31m", 0);
-	_puts(hostname, 0);
-	_puts("\033[0m", 0);
-	_puts("\033[0;32m", 0);
-	_puts(_usrpath, 0);
-	_puts("\033[0m", 0);
 	_puts("$ ", 0);
-	free(_usrpath);
 }

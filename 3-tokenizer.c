@@ -52,7 +52,7 @@ char is_a_path(char *token)
 		str = strtok(NULL, "/");
 	}
 
-	if(i > 1)
+	if (i > 1)
 		res = 1;
 
 	return (res);
