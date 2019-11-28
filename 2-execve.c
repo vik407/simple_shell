@@ -59,8 +59,8 @@ char *run_flag(char *app, char **envp)
 	int i, _access = 0;
 	char *res = NULL, *str, *_str = NULL, *__str = NULL, **_path;
 
-	str = getenv("PATH");
-	/*str = _getenv("PATH", envp);*/
+	/*str = getenv("PATH");*/
+	str = _getenv("PATH", envp);
 	if (app && _strncmp("env", app, 4) != 0)
 	{
 		_str = _strdup(str);

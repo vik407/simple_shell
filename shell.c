@@ -9,7 +9,7 @@
 int main(int argc, char **argv, char **envp)
 {
 	int status = 1, is_interactive;
-	char *readline = NULL, **tokens, *_readline = NULL;
+	char *readline = NULL, **tokens;
 
 	is_interactive = isatty(STDIN_FILENO);
 	/*if (is_interactive) hi();*/
@@ -21,13 +21,11 @@ int main(int argc, char **argv, char **envp)
 			free(readline);
 			continue;
 		}
-		_readline = _strdup(readline);
-		tokens = (_readline != NULL) ? tokenizer(_readline) : NULL;
+		tokens = (readline != NULL) ? tokenizer(readline) : NULL;
 		if (tokens != NULL)
 			run_execve(tokens, envp);
-		free(tokens);
 		free(readline);
-		free(_readline);
+		free(tokens);
 	} while (status);
 
 	(void) argc;

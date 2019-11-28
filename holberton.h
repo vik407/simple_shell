@@ -14,6 +14,8 @@
 #include <unistd.h>
 #include <wait.h>
 
+extern char **environ;
+
 /* Shell */
 #define BUFFER_SIZE 64
 char *_strdup(char *str);
@@ -23,7 +25,7 @@ int _strncmp(char *s1, char *s2, int n);
 char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char *_PATH(char **envp);
-char *_getenv(char *var, char **envp);
+char *_getenv(char *var, char **environ);
 
 /* Shell prototypes */
 void hi(void);
