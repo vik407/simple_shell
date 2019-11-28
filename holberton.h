@@ -20,6 +20,8 @@ char *_strdup(char *str);
 int _putchar(char c);
 void _puts(char *str, int n);
 int _strncmp(char *s1, char *s2, int n);
+char *_strcpy(char *dest, char *src);
+char *_strcat(char *dest, char *src);
 char *_PATH(char **envp);
 char *_getenv(char *var, char **envp);
 
@@ -30,7 +32,7 @@ char *read_line(void);
 char **tokenizer(char *read_line);
 int run_execve(char **tokens, char **envp);
 char *run_flag(char *app, char **envp);
-
-
+void free_double(char **func);
+char is_a_path(char *token);
 
 #endif

@@ -7,28 +7,32 @@
  */
 int run_execve(char **tokens, char **envp)
 {
-	int run, child, child_status;
-	char *app, *app_exists;
+	int child, child_status, path_status;
+	char *app, *_app, *app_exists;
 
 	app_exists = NULL;
-	run = 0;
 	/* Get the app name to search */
 	app = tokens[0];
-	app_exists = run_flag(app, envp);
+	_app = _strdup(app);
+	path_status = is_a_path(_app);
+	app_exists = (path_status == 1) ? tokens[0] : run_flag(app, envp);
 	if (app_exists != NULL)
 	{
 		child = fork();
 		if (child == 0)
 		{
-			run = execve(app_exists, tokens, NULL);
+			execve(app_exists, tokens, NULL);
 			/* Error Handling */
+			perror(app_exists);
+			exit(EXIT_FAILURE);
 		} else
 		{
 			wait(&child_status);
 			/* analizar child_status retornar estaddo */
 		}
+		return (0);
 	} else
-	{
+	{ 
 		/* Built ins */
 		if (_strncmp("exit", tokens[0], 5) == 0 && app != '\0')
 		{
@@ -39,13 +43,14 @@ int run_execve(char **tokens, char **envp)
 			_getenv("ALL", envp);
 		} else
 		{
-			/* If no exist in built ins */
+			/* If no exist in built ins */ 
 			_puts(app, 0);
-			_puts(": not found", 1);
+			_puts(": No such file or directory", 1);
 		}
+		return (0);
 	}
 	free(app_exists);
-	return (run);
+	return (0);
 }
 /**
  * run_flag - function that search if application exists in the PATH
@@ -67,9 +72,9 @@ char *run_flag(char *app, char **envp)
 		_path = tokenizer(_str);
 		for (i = 0; _path[i] != NULL; i++)
 		{
-			strcpy(__str, _path[i]);
-			strcat(__str, "/");
-			strcat(__str, app);
+			_strcpy(__str, _path[i]);
+			_strcat(__str, "/");
+			_strcat(__str, app);
 			_access = access(__str, F_OK | R_OK | X_OK);
 			if (_access == 0)
 			{
@@ -77,12 +82,16 @@ char *run_flag(char *app, char **envp)
 				break;
 			}
 		}
-		free(_path);
-		free(__str);
 		free(_str);
+		free(__str);
+		free_double(_path);
+		_path = NULL;
+		return (res);
+	} else
+	{
+		return (res);
 	}
 	(void) envp;
-	return (res);
 }
 /**
  * _getenv - function that return a desired env info

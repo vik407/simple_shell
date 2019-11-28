@@ -17,9 +17,15 @@ int main(int argc, char **argv, char **envp)
 	do {
 		prompt();
 		readline = read_line();
+		if (readline[0] == '\0')
+		{
+			free(readline);
+			continue;
+		}
 		_readline = _strdup(readline);
 		tokens = (_readline != NULL) ? tokenizer(_readline) : NULL;
-		run_execve(tokens, envp);
+		if (tokens != NULL)
+			run_execve(tokens, envp);
 		free(tokens);
 		free(readline);
 		free(_readline);
@@ -57,4 +63,5 @@ void prompt(void)
 	_puts(_usrpath, 0);
 	_puts("\033[0m", 0);
 	_puts("$ ", 0);
+	free(_usrpath);
 }
