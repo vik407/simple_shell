@@ -113,6 +113,9 @@ $
 | env | prints the environment |
 | exit | exits with status 0 |
 | ctrl-d | exits with status 0 |
+# NOTE
+* reed the blog 
+https://medium.com/@1290/what-happens-when-you-type-ls-l-in-the-shell-c34997fb4b16
 
 # Authors
 
