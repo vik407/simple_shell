@@ -56,7 +56,6 @@ Use system calls only when you need to
 - **``wait4``** (man 2 wait4)
 - **``write``** (man 2 write)
 
-
 ## Compilation
 
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
@@ -90,12 +89,33 @@ hsh main.c shell.c test_ls_2
 $
 ```
 
-## Files
+## File Descriptions 
+| Filename | Funtions | Description | 
+| ------------- | ------------- | ------------ |
+| 0x0-funtions_syscalls.c | | |
+| 0x1-funtions_syscalls.c | | |
+| | _putchar | writes the character c to stdout. |
+| | *_strdup | function that returns a pointer to a newly allocated space in. |
+| | _strncmp | function that compares two strings. |
+| | _puts | prints a string, followed by a new line, to stdout |
+| 1-read_line.c | *read_line  | get the user input |
+| 2-execve.c | run_execve | execute an app from the user input |
+| | *run_flag | search if application exists in the PATH |
+| | *_getenv | function that return a desired env info |
+| 3-tokenizer.c | tokenizer | create tokens by designed separator |
+| 4-free | free_double | iterates liberating a double pointer |
+| holberton.h | library | |
+| man_1_simple_shell | shell manual | |
 
-
-```
-
-```
+### Built-ins
+| Command | Description |
+| ------------- |:-------------:|
+| env | prints the environment |
+| exit | exits with status 0 |
+| ctrl-d | exits with status 0 |
+# NOTE
+* reed the blog 
+https://medium.com/@1290/what-happens-when-you-type-ls-l-in-the-shell-c34997fb4b16
 
 # Authors
 
