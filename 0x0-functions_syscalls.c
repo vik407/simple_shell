@@ -86,21 +86,14 @@ void _puts(char *str, int n)
  * @src: The string to append
  * Return: concatenated string
  */
-char *_strcat(char *dest, char *src)
+char *_strcat(char *dest, const char *src)
 {
-	int d_count = 0, s_count = 0;
+	size_t dest_len = strlen(dest);
+	size_t i;
 
-	while (dest[d_count] != '\0')
-	{
-		d_count++;
-	}
+	for (i = 0 ; src[i] != '\0' ; i++)
+		dest[dest_len + i] = src[i];
+	dest[dest_len + i] = '\0';
 
-	while (src[s_count] != '\0')
-	{
-		*(dest + d_count) = *(src + s_count);
-		d_count++;
-		s_count++;
-	}
-
-	return (dest);
+	return dest;
 }

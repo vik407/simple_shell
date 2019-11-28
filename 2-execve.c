@@ -84,7 +84,7 @@ char *run_flag(char *app, char **envp)
 		}
 		free(_str);
 		free(__str);
-		free_double(_path);
+		free(_path);
 		_path = NULL;
 		return (res);
 	} else

@@ -12,10 +12,11 @@ int main(int argc, char **argv, char **envp)
 	char *readline = NULL, **tokens, *_readline = NULL;
 
 	is_interactive = isatty(STDIN_FILENO);
-	if (is_interactive)
+	if (is_interactive == 1)
 		hi();
 	do {
-		prompt();
+		if (is_interactive)
+			prompt();
 		readline = read_line();
 		if (readline[0] == '\0')
 		{

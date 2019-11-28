@@ -21,7 +21,7 @@ int _putchar(char c);
 void _puts(char *str, int n);
 int _strncmp(char *s1, char *s2, int n);
 char *_strcpy(char *dest, char *src);
-char *_strcat(char *dest, char *src);
+char *_strcat(char *dest, const char *src);
 char *_PATH(char **envp);
 char *_getenv(char *var, char **envp);
 

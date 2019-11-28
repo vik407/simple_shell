@@ -7,16 +7,19 @@
 char *read_line(void)
 {
 	size_t buffersize = 0;
-	int readline_status = 0;
+	int readline_status = NULL;
 	char *buff = NULL;
 
 	readline_status = getline(&buff, &buffersize, stdin);
-	if (readline_status == -1)
+	buff[readline_status - 1] = '\0';
+	if (readline_status > 1)
+	{
+		return (buff);
+	} else if (readline_status == -1 || buff[0] == 0)
 	{
 		_putchar('\n');
-		free(buff);
 		exit(0);
 	}
-	buff[readline_status - 1] = '\0';
-	return (buff);
+	free(buff);
+	return (0);
 }
