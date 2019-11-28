@@ -3,18 +3,32 @@
 .B simple shell
 - Simple UNIX command interpreter.
 .SH SYNOPSIS
-.Pp man_1_simple_shell
+.Pp bash [options] [file]
 
 .SS DESCRIPTION
 .Pp 
 by means of a command line interface, it uses a command language interpreter compatible with sh that executes commands read from the standard input or from a file, executes those commands, which allows to give instruction to a program by means of a line of simple text, then simple_shell searches the PATH directories for the script.
 .SH OPTiONS
-.I \fB-ctrl + d. \fp
-Pressing these keys at the same time exits the simple shell mode
+.I this shell does not handle options 
 .SH FILES
-/etc/shell
 /bin/sh
+/usr/local/sbin:
+/usr/local/bin:
+/usr/sbin:
+/usr/bin:
+/sbin:
+/bin:
+/usr/games:
+/usr/local/games
 
+.SH COMMAND EXECUTION
+After a command is read by the interpreter, it will be split into tokens. Depending on input, the  following actions will take place
+.PP
+.SH SHELL BUILT-IN COMMANDS
+.SS env
+Print the environment variables to STDOUT
+.SS exit
+Exit the shell.
 .Pp
 .SH BUGS
 No known bugs.
